@@ -1,6 +1,10 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+
+// W plikach nagłówkowych *.h jest DEKLARACJA funkcji 
+// W bibliotece wspoldzielonej jest DEFINICJA funckji
+
 int main(int argc, char*argv[]){
     //unsigned int - całkowita dodatnia lub 0
     float v;
