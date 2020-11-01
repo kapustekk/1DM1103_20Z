@@ -71,7 +71,5 @@ int main(int argc, char **argv)
     //printf("%.1f %.1f\n%.1f %.1f\n%.1f %.1f\n",tablicaa[0][0],tablicaa[0][1],tablicaa[1][0],tablicaa[1][1],tablicaa[2][0],tablicaa[2][1]);
     //printf("\n\n\n");
     //printf("%.1f\n%.1f\n",tablicax[0],tablicax[1]);
-    //printf("\n\n\n");
-    //wypisz_wektor(tablicax, wierszex);
 
 }
