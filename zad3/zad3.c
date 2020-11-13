@@ -123,17 +123,11 @@ struct Macierz odejmij(struct Macierz ma, struct Macierz mb)
     return liczba;
 }
 
-
-// wczytaj plik repezentujacy dwuwymiarowa macierz
-// r
-// c
-// liczby....
 int main(int argc, char *argv[]) {
     struct Macierz maca;
     struct Macierz macb;
     FILE * fina;
     FILE *finb;
-    // = fopen(argv[1], "r");
 
     if ( strcmp( argv[1], "norm") == 0) {
         fina  = fopen(argv[2], "r");
@@ -199,7 +193,12 @@ int main(int argc, char *argv[]) {
         wczytaj(fina, &maca);
         fclose(fina);
         fclose(finb);
-        if (argc == 4)
+        if (maca.k!=macb.r)
+        {
+            printf("nieprawdiłowe rozmiary macierzy!\n");
+            exit(-8);
+        }
+        else if (argc == 4)
         wypisz(iloczyn(maca, macb));
         else if (argc == 5)
         zapisz_macierz(argv[4], iloczyn(maca, macb));
@@ -218,7 +217,12 @@ int main(int argc, char *argv[]) {
         wczytaj(fina, &maca);
         fclose(fina);
         fclose(finb);
-        if (argc == 4)
+        if ((maca.r!=macb.r)||(maca.c!=macb.c))
+        {
+            printf("nieprawdiłowe rozmiary macierzy!\n");
+            exit(-7);
+        }
+        else if (argc == 4)
         wypisz(odejmij(maca, macb));
         else if (argc == 5)
         zapisz_macierz(argv[4], odejmij(maca, macb));
@@ -228,6 +232,5 @@ int main(int argc, char *argv[]) {
         exit(-6);
         }
     }
-
     return 0;
 }
