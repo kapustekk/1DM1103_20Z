@@ -2,10 +2,10 @@
 DEPS=main.o studenci.o dziekanat.o
 
 main: $(DEPS)
-	cc $(DEPS) -Wall
+	cc $(DEPS) -Wall -o $@ -Wall --pedantic
 
 %.o:%.c
-	cc -c $^ 
+	cc -c $^ -o $@
 
 clean:
 	rm -f main
