@@ -2,8 +2,11 @@ all:
 	cc baza.c main.c -o mydb -Wall --pedantic
 
 test: all
-	./mydb baza.csv list_students
+	./mydb baza.csv list_base
 
+test-students: all
+	./mydb baza.csv list_students
+	
 test-ile: all
 	./mydb baza.csv count_students
 
@@ -13,5 +16,5 @@ test-memory: all
 test-add_student: all
 	./mydb baza.csv add_student Adam Małysz 007007 malysz7@lece.pl
 
-test-add-subject: all
-	./mydb baza.csv add_subject 000017 1DE2199 5.000000 1DE2106
+test-add_subject: all
+	./mydb baza.csv add_subject 1DE2199 Matematyka 5067Z
