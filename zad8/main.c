@@ -61,17 +61,10 @@ int main(int argc, char ** argv) {
         printf("znalezione oceny z przedmiotu: %s\n",argv[3]);
         for(int i=0;i<n;i++)
         {
-            if(n>1)
-            {
-            wypisz_glowe_ocen(glowa->poprz);
-            // alternatywnie:
-            // printf("%s - %s - %s \n", glowa->poprz->nr_albumu, glowa->poprz->ocena, glowa->poprz->komentarz);
-            glowa->poprz=glowa->poprz->next;
-            }
-            else if(n==1)
             wypisz_glowe_ocen(glowa);
-            else if(n==0)
-            printf("brak ocen dla tego przedmiotu!\n");
+            // alternatywnie:
+            // printf("%s - %s - %s \n", glowa->nr_albumu, glowa->ocena, glowa->komentarz);
+            glowa=glowa->next;
         }
     }
     else if(strcmp("filter_student",argv[2])==0)
@@ -82,23 +75,11 @@ int main(int argc, char ** argv) {
         printf("znalezione oceny studenta o albumie: %s\n",argv[3]);
         for(int i=0;i<n;i++)
         {
-            if(n>1)
-            {
-            wypisz_glowe_ocen(glowa->poprz);
-            // printf("%s - %s - %s \n", glowa->poprz->kod_przedmiotu, glowa->poprz->ocena, glowa->poprz->komentarz);
-            glowa->poprz=glowa->poprz->next;
-            }
-            else if(n==1)
             wypisz_glowe_ocen(glowa);
-            else if(n==0)
-            printf("brak ocen dla tego studenta!\n");
-
+            // printf("%s - %s - %s \n", glowa->kod_przedmiotu, glowa->ocena, glowa->komentarz);
+            glowa=glowa->next;        
         }
     }
-
-    // else if (strcmp("list_students_from_end", argv[2]) == 0) {
-    //     listuj_studentow_od_konca(baza);
-    // }
 
     zapisz_baze(argv[1], baza);
     zwolnij(baza);

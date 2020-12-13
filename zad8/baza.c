@@ -467,6 +467,7 @@ Ocena * filtruj_przedmiot(Ocena *glowao, char *kod_przedmiotu) {
     {   
         if(strcmp(glowao->kod_przedmiotu, kod_przedmiotu)==0) 
         {
+            
             Ocena *o = (Ocena *)malloc(sizeof(Ocena));
             o->next = NULL;
             o->poprz = NULL;
@@ -474,22 +475,19 @@ Ocena * filtruj_przedmiot(Ocena *glowao, char *kod_przedmiotu) {
             glowa=o;
             else
             {
-                // printf("cyk\n");
+                printf("cyk\n");
                 c = ostatnia_ocena(glowa);
                 ostatnia_ocena(glowa)->next = o;
                 o->poprz = c;
-                glowa=glowa->next;
             }
-            // printf("kopiuje elementy\n");
-            glowa->nr_albumu=glowao->nr_albumu;
-            glowa->kod_przedmiotu=glowao->kod_przedmiotu;
-            glowa->ocena=glowao->ocena;
-            glowa->komentarz=glowao->komentarz;
-            // printf("%s %s %s %s \n", glowa->kod_przedmiotu, glowa->nr_albumu, glowa->ocena, glowa->komentarz);
+            printf("kopiuje elementy\n");
+            o->nr_albumu=glowao->nr_albumu;
+            o->kod_przedmiotu=glowao->kod_przedmiotu;
+            o->ocena=glowao->ocena;
+            o->komentarz=glowao->komentarz;
         }
         glowao=glowao->next;
     }
-   
     return glowa;
 }
 int znalezione_albumy(Ocena *glowao, char *album)
@@ -524,12 +522,11 @@ Ocena * filtruj_student(Ocena *glowao, char *album) {
                 c = ostatnia_ocena(glowa);
                 ostatnia_ocena(glowa)->next = o;
                 o->poprz = c;
-                glowa=glowa->next;
             }
-            glowa->nr_albumu=glowao->nr_albumu;
-            glowa->kod_przedmiotu=glowao->kod_przedmiotu;
-            glowa->ocena=glowao->ocena;
-            glowa->komentarz=glowao->komentarz;
+            o->nr_albumu=glowao->nr_albumu;
+            o->kod_przedmiotu=glowao->kod_przedmiotu;
+            o->ocena=glowao->ocena;
+            o->komentarz=glowao->komentarz;
         }
         glowao=glowao->next;
     }
