@@ -54,28 +54,45 @@ int main(int argc, char ** argv) {
     }
     else if(strcmp("filter_subject",argv[2])==0)
     {
+        int n=znalezione_kody(baza->lista_ocen,argv[3]);
         Ocena*glowa;
         glowa= filtruj_przedmiot(baza->lista_ocen,argv[3]);
         // printf("%d\n",znalezione_kody(baza->lista_ocen,argv[3]));
         printf("znalezione oceny z przedmiotu: %s\n",argv[3]);
-        for(int i=0;i<znalezione_kody(baza->lista_ocen,argv[3]);i++)
+        for(int i=0;i<n;i++)
         {
+            if(n>1)
+            {
             wypisz_glowe_ocen(glowa->poprz);
             // alternatywnie:
             // printf("%s - %s - %s \n", glowa->poprz->nr_albumu, glowa->poprz->ocena, glowa->poprz->komentarz);
             glowa->poprz=glowa->poprz->next;
+            }
+            else if(n==1)
+            wypisz_glowe_ocen(glowa);
+            else if(n==0)
+            printf("brak ocen dla tego przedmiotu!\n");
         }
     }
     else if(strcmp("filter_student",argv[2])==0)
     {
+        int n=znalezione_albumy(baza->lista_ocen,argv[3]);
         Ocena*glowa;
         glowa= filtruj_student(baza->lista_ocen,argv[3]);
         printf("znalezione oceny studenta o albumie: %s\n",argv[3]);
-        for(int i=0;i<znalezione_albumy(baza->lista_ocen,argv[3]);i++)
+        for(int i=0;i<n;i++)
         {
+            if(n>1)
+            {
             wypisz_glowe_ocen(glowa->poprz);
             // printf("%s - %s - %s \n", glowa->poprz->kod_przedmiotu, glowa->poprz->ocena, glowa->poprz->komentarz);
             glowa->poprz=glowa->poprz->next;
+            }
+            else if(n==1)
+            wypisz_glowe_ocen(glowa);
+            else if(n==0)
+            printf("brak ocen dla tego studenta!\n");
+
         }
     }
 
